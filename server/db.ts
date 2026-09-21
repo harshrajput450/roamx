@@ -1,5 +1,5 @@
-import { Trip, Review, BookingInquiry, AnnouncementStrip, DepartureCity } from '../src/types';
-import { getSupabase, uploadImageToStorage, deleteImageFromStorage, isBase64DataUrl } from './supabase';
+import { Trip, Review, BookingInquiry, AnnouncementStrip, DepartureCity } from '../src/types.js';
+import { getSupabase, uploadImageToStorage, deleteImageFromStorage, isBase64DataUrl } from './supabase.js';
 
 // Helper to ensure Supabase client is available
 function requireSupabase() {

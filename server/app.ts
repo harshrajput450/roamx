@@ -31,28 +31,28 @@ import {
   toggleAnnouncementActive,
   deleteAnnouncement,
   checkAndReserveSeats,
-} from './db';
+} from './db.js';
 import {
   getSupabase,
   validateSupabaseConfig,
   uploadImageToStorage,
   deleteImageFromStorage,
   isBase64DataUrl,
-} from './supabase';
+} from './supabase.js';
 import {
   getRazorpayKeyId,
   createRazorpayOrder,
   verifyRazorpayPaymentSignature,
   verifyRazorpayPaymentWithAPI,
   isRazorpayConfigured,
-} from './razorpay';
+} from './razorpay.js';
 import {
   requireAdminAuth,
   ensureAdminUserExists,
   isAuthorizedAdminEmail,
   AuthenticatedRequest,
-} from './auth';
-import { validateServerEnv, getServerConfig } from './config/env';
+} from './auth.js';
+import { validateServerEnv, getServerConfig } from './config/env.js';
 
 export function createExpressApp() {
   const app = express();

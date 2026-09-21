@@ -1,6 +1,6 @@
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
-import { getServerConfig } from './config/env';
+import { getServerConfig } from './config/env.js';
 
 let razorpayInstance: Razorpay | null = null;
 
