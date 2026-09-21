@@ -7,7 +7,7 @@ import { getServerConfig } from './server/config/env';
 async function startServer() {
   const config = getServerConfig();
   const app = createExpressApp();
-  const PORT = 3000;
+  const PORT = process.env.PORT || 3000;
 
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
@@ -17,19 +17,14 @@ async function startServer() {
 
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
-
-    app.use(express.static(distPath));
-
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+    // API Health Check for Render Production Deployment
+    app.get('/', (req, res) => {
+      res.status(200).json({ status: 'ok', message: 'RoamX Expeditions API Server Running' });
     });
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(
-      `🏔️ RoamX Expeditions Server running on ${config.APP_URL || `http://localhost:${PORT}`}`
-    );
+    console.log(`🏔️ RoamX Expeditions Server running on port ${PORT}`);
   });
 }
 
